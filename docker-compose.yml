@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  web:
+    image: nginx:latest
+    ports:
+      - "8080:80"
+    labels:
+      # Esta etiqueta le dice a nuestro script: "Vigílame"
+      - "monitoreo_ia=activo" 
+
+  db:
+    image: mysql:8.0
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: mi_base_datos
+    labels:
+      - "monitoreo_ia=activo"
